@@ -1,0 +1,78 @@
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Visor del mapa */
+.map-container {
+    user-select: none;
+    background-color: #f1f3f5;
+    border-radius: 0.5rem;
+}
+
+.map-container img {
+    display: block;
+}
+
+/* Capa de puntos: no captura clics, solo los puntos */
+.layer-puntos {
+    pointer-events: none;
+}
+
+/* Puntos de equipos */
+.dot-equipo {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #28a745;
+    border: 2px solid #ffffff;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.dot-equipo:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: #20c997;
+    z-index: 10;
+}
+
+.dot-equipo.selected {
+    background-color: #0d6efd;
+    transform: translate(-50%, -50%) scale(1.6);
+    z-index: 20;
+}
+
+/* Tarjeta de detalles flotando a la derecha del mapa */
+.panel-equipo {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 280px;
+    max-width: calc(100% - 3rem);
+    z-index: 30;
+}
+
+/* Modo edición */
+.modo-edicion-activa #mapContainer {
+    cursor: crosshair;
+}
+
+.modo-edicion-activa .dot-equipo {
+    cursor: move;
+    touch-action: none; /* necesario para arrastrar con el dedo */
+}
+
+.dot-equipo.arrastrando {
+    background-color: #fd7e14;
+    transform: translate(-50%, -50%) scale(1.6);
+    z-index: 25;
+    transition: none;
+}
+
+/* Botones de planta */
+.btn-group .btn.active {
+    font-weight: 600;
+}
